@@ -1,6 +1,6 @@
 <?php
-	include("dbconnect.php");
-	include("playerClass.php");
+	include("model/dbconnect.php");
+	include_once("model/Player.php");
 	$id = $_GET['id'];
 	if(empty($id))
 	{

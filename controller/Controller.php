@@ -18,17 +18,14 @@ class Controller {
 	}
 	public function invoke()
 	{
-		if (!isset($_GET['book']))
+		if (!isset($_GET['id']))
 		{
-			// no special book is requested, we'll show a list of all available books
 			$players = $this->members->getMembers();
 			include 'view/memberlist.php';
 		}
 		else
 		{
-			// show the requested book
-			//$book = $this->model->getBook($_GET['book']);
-			//include 'view/viewbook.php';
+			include 'view/viewmember.php';
 		}
 	}
 }

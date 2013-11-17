@@ -27,7 +27,7 @@
 foreach ($players as $player => $member)
 {
 	echo "<tr>";
-	echo "<td>".$member->name."</td>";
+	echo '<td><a href="index.php?id='.$member->id.'">'.$member->name.'</a></td>';
     echo "<td>".$member->id."</td>";
 	echo "</tr>";
 }
