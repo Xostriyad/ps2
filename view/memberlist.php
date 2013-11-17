@@ -24,15 +24,14 @@
 </thead>
 <tbody>
 <?php
-while ($row = $stmt->fetch()) 
+foreach ($players as $player => $member)
 {
 	echo "<tr>";
-	//--- change these
-	echo "<td>".$row["item_id"]."</td>";
-    echo "<td>".$row["name"]."</td>";
-	//---
+	echo "<td>".$member->name."</td>";
+    echo "<td>".$member->id."</td>";
 	echo "</tr>";
 }
+
 ?>
 </tbody>
 <tfoot>
