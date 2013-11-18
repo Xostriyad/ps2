@@ -1,32 +1,5 @@
 <?php
-	include("model/dbconnect.php");
-	include_once("model/Player.php");
-	$id = $_GET['id'];
-	if(empty($id))
-	{
-		exit();
-	}
-	$player = Player::withID($id);
-	$query = $dbh->prepare("
-	SELECT b.group_name, p.name, cb.item_id, pa.name AS base_name
-	FROM groups b
-	JOIN group_items cb ON cb.group_id = b.group_id
-	JOIN items p ON p.item_id = cb.item_id
-	LEFT JOIN wattachments a ON cb.item_id = a.attachment_item_id
-	LEFT JOIN items pa ON pa.item_id = a.item_id
-	");
-	$query->execute();
-	$rows = $query->fetchAll();
-	$groupA = array();
-	foreach ($rows as $row) 
-	{
-		if (!isset($groupA[$row["group_name"]]))
-		{
-			$groupA[$row["group_name"]] = array();
-		}
-		array_push($groupA[$row["group_name"]], $row);
-	}
-	foreach($groupA as $group)
+	foreach($model as $group)
 	{
 		$output = $group[0]["group_name"]."<br/>";
 		

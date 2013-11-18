@@ -18,27 +18,34 @@
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
 <thead>
 	<tr>
-		<th>Member Name</th>
-		<th>Member ID</th>
+		<th>item_id</th>
+		<th>name</th>
+		<th>description</th>
+		<th>image_path</th>
 	</tr>
 </thead>
 <tbody>
 <?php
+include("dbconnect.php");
+$stmt = $dbh->prepare("SELECT * FROM `items`");
+$stmt->execute();
 while ($row = $stmt->fetch()) 
 {
 	echo "<tr>";
-	//--- change these
 	echo "<td>".$row["item_id"]."</td>";
     echo "<td>".$row["name"]."</td>";
-	//---
+	echo "<td>".$row["description"]."</td>";
+	echo "<td>".$row["image_path"]."</td>";
 	echo "</tr>";
 }
 ?>
 </tbody>
 <tfoot>
 	<tr>
-		<th>Member Name</th>
-		<th>Member ID</th>
+		<th>item_id</th>
+		<th>name</th>
+		<th>description</th>
+		<th>image_path</th>
 	</tr>
 </tfoot>
 </table>

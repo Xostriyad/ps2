@@ -24,7 +24,7 @@
 </thead>
 <tbody>
 <?php
-foreach ($players as $player => $member)
+foreach ($model as $player => $member)
 {
 	echo "<tr>";
 	echo '<td><a href="index.php?id='.$member->id.'">'.$member->name.'</a></td>';
