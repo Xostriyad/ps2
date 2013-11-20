@@ -26,7 +26,7 @@
 </thead>
 <tbody>
 <?php
-include("dbconnect.php");
+include("model/dbconnect.php");
 $stmt = $dbh->prepare("SELECT * FROM `items`");
 $stmt->execute();
 while ($row = $stmt->fetch()) 

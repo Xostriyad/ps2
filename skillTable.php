@@ -28,7 +28,7 @@
 </thead>
 <tbody>
 <?php
-include("dbconnect.php");
+include("model/dbconnect.php");
 $stmt = $dbh->prepare("SELECT * FROM `skills`");
 $stmt->execute();
 while ($row = $stmt->fetch()) 

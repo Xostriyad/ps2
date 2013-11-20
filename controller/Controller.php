@@ -4,13 +4,11 @@ class Controller {
 
 	public function __construct()  
     {
-		//include_once("view/shared/header.php");
 	}
 	
 	protected function view($page, $model)
 	{
 		include_once("view/shared/pagelayout.php");
-		//might revisit this, wanted a view('view/memberlist.php'); call to make things look cleaner
 	}
 	
 	public function index()
@@ -22,19 +20,20 @@ class Controller {
 			$players = $members->getMembers();
 			$page = 'view/memberlist.php';
 			$this->view($page, $players);
-			//include("view/shared/pagelayout.php");
 		}
 		else
 		{
 			include_once("model/dbconnect.php");
 			include_once("model/Player.php");
+			include_once("model/Tree.php");
 			$id = $_GET['id'];
 			if(empty($id))
 			{
 				exit();
 			}
 			$player = Player::withID($id);
-			$query = $dbh->prepare("
+			//Need a query items, skills and vehicles
+			$queryItems = $dbh->prepare("
 			SELECT b.group_name, p.name, cb.item_id, pa.name AS base_name
 			FROM groups b
 			JOIN group_items cb ON cb.group_id = b.group_id
@@ -42,23 +41,33 @@ class Controller {
 			LEFT JOIN wattachments a ON cb.item_id = a.attachment_item_id
 			LEFT JOIN items pa ON pa.item_id = a.item_id
 			");
-			$query->execute();
-			$rows = $query->fetchAll();
-			$groupA = array();
+			$queryItems->execute();
+			$rows = $queryItems->fetchAll();
+			$forest = array();
 			foreach ($rows as $row) 
 			{
-				if (!isset($groupA[$row["group_name"]]))
+				$treeName = $row["group_name"];
+				if ($row["base_name"]===NULL)
 				{
-					$groupA[$row["group_name"]] = array();
+					$branchName = $row["name"];
 				}
-				array_push($groupA[$row["group_name"]], $row);
+				else
+				{
+					$branchName = $row["base_name"];
+				}
+				$eqName = $row["name"];
+				$haveEq = $player->getItemByID($row["item_id"]);
+				
+				if (!isset($forest[$treeName]))
+				{
+					$forest[$treeName] = new Tree($treeName);
+				}
+				$forest[$treeName]->addBranch($branchName, $eqName, $haveEq);
 			}
-			$model = $groupA;
+			$model = $forest;
 			$page = 'view/viewmember.php';
 			
-			//$this->view($page, $groupA);
-			//enable this later, currently viewmember is not fully MVC compliant
-			include("view/shared/pagelayout.php"); //disable this when above is corrected
+			$this->view($page, $forest);
 		}
 	}
 }

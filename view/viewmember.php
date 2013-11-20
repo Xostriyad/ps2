@@ -1,27 +1,15 @@
 <?php
-	foreach($model as $group)
+	foreach($model as $tree)
 	{
-		$output = $group[0]["group_name"]."<br/>";
-		
-		foreach($group as $gItem)
+		echo $tree->name."<br/>";
+		foreach($tree->branches as $branch)
 		{
-			$name = $gItem["name"];
-			$name = $name.(isset($gItem["base_name"]) ? "[".$gItem["base_name"]."]" : "");
-			$output = $output.$name.": ";
-			$temp = $player->getItemByID($gItem["item_id"]);
-			if($temp==0)
+			echo $branch->name."<br/>";
+			foreach($branch->leaves as $leaf)
 			{
-				$output = $output."<span style='color:red;'><b>I can't find it!!</b></span><br/>";
+				echo $leaf->name." ".$leaf->have."<br/>";
 			}
-			else
-			{
-				//item 501, mana vehicle turret seems to show up regardless
-				//Must be logically a skill to unlock the usage of this existing item.
-				$output = $output."<span style='color:green;'><b>You got it!</b></span><br/>";
-			}
-			
 		}
-		echo $output;
-		
+		echo "<br/><br/>";
 	}
 ?>
