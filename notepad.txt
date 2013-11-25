@@ -1,6 +1,10 @@
 skill->skill_line->skill_set
 Gets what the skill is attached to.
 
+Suit, Vehicle, Weapon logic needs to be separated in the build.
+
+s,v,w: 
+
 Suit
 *Suit Upgrades
 Vehicle

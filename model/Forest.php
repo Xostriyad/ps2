@@ -14,7 +14,7 @@
 			$this->populate(); //Eventually this will take an array of Certification Trees, for now it will return all
 		}
 
-		protected function populate()
+		protected function populate() //This whole function will need to be reworked when I start specifying cert trees.
 		{
 			$weapons = '
 			SELECT b.group_name, p.name, cb.item_id, pa.name AS base_name
@@ -24,6 +24,7 @@
 			LEFT JOIN wattachments a ON cb.item_id = a.attachment_item_id
 			LEFT JOIN items pa ON pa.item_id = a.item_id
 			WHERE cb.item_tag = "W"
+			ORDER BY p.name ASC 
 			';
 			$suitUpgrades = '
 			SELECT b.group_name, p.name, cb.item_id, pa.name AS base_name
@@ -33,11 +34,21 @@
 			LEFT JOIN item_profile a ON cb.item_id = a.item_id
 			LEFT JOIN profile pa ON pa.profile_id = a.profile_id
 			WHERE cb.item_tag =  "S"
+			ORDER BY p.name ASC 
 			';
-			//--------------------------------------------------------//
+			$vehicle = '
+			SELECT b.group_name, p.name, cb.item_id, a.description AS base_name
+			FROM groups b
+			JOIN group_items cb ON cb.group_id = b.group_id
+			JOIN items p ON p.item_id = cb.item_id
+			LEFT JOIN vehicle_attachment a ON cb.item_id = a.item_id
+			WHERE cb.item_tag =  "V"
+			ORDER BY p.name ASC
+			';
+			$this->runQ($vehicle);
 			$this->runQ($weapons);
 			$this->runQ($suitUpgrades);
-			//--make this smarter when I finish vehicle attachments --//
+			
 		}
 		protected function runQ($query)
 		{
