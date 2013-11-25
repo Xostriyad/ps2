@@ -34,9 +34,10 @@
 			LEFT JOIN profile pa ON pa.profile_id = a.profile_id
 			WHERE cb.item_tag =  "S"
 			';
-			//make this smarter when I finish vehicle attachments
+			//--------------------------------------------------------//
 			$this->runQ($weapons);
 			$this->runQ($suitUpgrades);
+			//--make this smarter when I finish vehicle attachments --//
 		}
 		protected function runQ($query)
 		{

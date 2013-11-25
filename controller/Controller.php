@@ -15,7 +15,8 @@ class Controller {
 	{
 		if (!isset($_GET['id']))
 		{
-			$id = "37509488620610014";
+			$id = "37509488620610014"; 
+			//hard coding just one member group for the time being until phase 1 deployment is done
 			$members = Members::withID($id);
 			$players = $members->getMembers();
 			$page = 'view/memberlist.php';
