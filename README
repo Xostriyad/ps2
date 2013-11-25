@@ -1,0 +1,40 @@
+This web application is for certification tree tracking.
+
+This is currently in beta and looking for additional front end designers and developers to work on the views.
+
+Database backup is provided to get this application running locally, if you are a windows user and new to development
+downloading and learning to use www.wampserver.com/en/ for your local webserver and datbase needs
+and
+notepad-plus-plus.org for editing files is a great way to get started with minimal trouble.
+
+----------------
+
+Current Bugs:
+MANA Vehicle Turret shows as everyone has one
+*Problem is, everyone has the item listed from the API, current theory is that it is unlocked for use. But the skill list shows no evidence of unlocking it.
+
+Current Features:
+
+    Table of members in VCO with active links
+    Table updated to show more information on users, shows some interesting statistics
+    Clicking on link will show you what items you have in relation to the tier groups
+    MVC has been implemented
+
+
+Planned Features for version 1:
+
+    Ability to create certification trees through a UI
+    Fix grouping of suits and vehicles, nanoweave for medic shows under medic, unlocks for vehicles shows under that vehicle, etc
+    Adjust to allow logic, like assigning equipment or entire branches of a cert tree as "Required / Or / Optional"
+    Track cert costs for items and show total Cert costs for Trees and Branches
+    Show estimated time of unlocking a cert tree given current free certs and projected cert/minute gain
+
+
+Future Plans for version 2:
+
+    Open App for any oufit to utilize for their own uses
+    Move App to a proper web address for VCO
+    Login and authentication for users
+    A personal tree plan for different users
+    Cert Trees, SOPs, etc grouped by which outfit uses which
+
