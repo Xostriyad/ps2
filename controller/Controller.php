@@ -1,5 +1,6 @@
 <?php
 include_once("model/Members.php");
+include_once("model/dbconnect.php");
 class Controller {
 
 	public function __construct()  
@@ -38,15 +39,63 @@ class Controller {
 			$this->view($page, $model);
 		}
 	}
+	
 	public function skillTable()
 	{
+		include("model/dbconnect.php");
+		$stmt = $dbh->prepare("SELECT * FROM `skills`");
+		$stmt->execute();
+		$model = $stmt->fetchAll();
 		$page = 'view/skilltable.php';
-		$this->view($page);
+		$this->view($page, $model);
 	}
-		public function itemTable()
+	
+	public function itemTable()
 	{
+		include("model/dbconnect.php");
+		$stmt = $dbh->prepare("SELECT * FROM `items`");
+		$stmt->execute();
+		$model = $stmt->fetchAll();
 		$page = 'view/itemtable.php';
-		$this->view($page);
+		$this->view($page, $model);
+	}
+	
+	public function certTree()
+	{
+		include("model/dbconnect.php");
+		$stmt = $dbh->prepare("SELECT * FROM `groups`");
+		$stmt->execute();
+		$model = $stmt->fetchAll();
+		$page = 'view/certtree.php';
+		$this->view($page, $model);
+	}
+	
+	public function insertTree()
+	{
+		include("model/dbconnect.php");
+		if(isset($_POST["name"]))
+		{
+			$stmt = $dbh->prepare("INSERT INTO groups (group_name) VALUES (:name) ON DUPLICATE KEY UPDATE group_name=':name'");
+			$stmt->bindParam(':name', $name);
+			$name = $_POST['name'];
+			$stmt->execute();
+		}
+		header('Location: certTree.php');
+		exit();
+	}
+	
+	public function deleteTree()
+	{
+		include("model/dbconnect.php");
+		if(isset($_GET["id"]))
+		{
+			$stmt = $dbh->prepare("DELETE FROM groups WHERE group_id = :id");
+			$stmt->bindParam(':id', $id);
+			$id = $_GET['id'];
+			$stmt->execute();
+		}
+		header('Location: certTree.php');
+		exit();
 	}
 }
 

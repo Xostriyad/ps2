@@ -11,18 +11,15 @@
 </thead>
 <tbody>
 <?php
-include("model/dbconnect.php");
-$stmt = $dbh->prepare("SELECT * FROM `skills`");
-$stmt->execute();
-while ($row = $stmt->fetch()) 
+foreach($model as $item)
 {
 	echo "<tr>";
-	echo "<td>".$row["skill_id"]."</td>";
-    echo "<td>".$row["name"]."</td>";
-	echo "<td>".$row["description"]."</td>";
-	echo "<td>".$row["image_path"]."</td>";
-	echo "<td>".$row["skill_points"]."</td>";
-	echo "<td>".$row["skill_line_id"]."</td>";
+	echo "<td>".$item["skill_id"]."</td>";
+    echo "<td>".$item["name"]."</td>";
+	echo "<td>".$item["description"]."</td>";
+	echo "<td>".$item["image_path"]."</td>";
+	echo "<td>".$item["skill_points"]."</td>";
+	echo "<td>".$item["skill_line_id"]."</td>";
 	echo "</tr>";
 }
 ?>

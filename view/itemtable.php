@@ -9,16 +9,13 @@
 </thead>
 <tbody>
 <?php
-include("model/dbconnect.php");
-$stmt = $dbh->prepare("SELECT * FROM `items`");
-$stmt->execute();
-while ($row = $stmt->fetch()) 
+foreach($model as $item)
 {
 	echo "<tr>";
-	echo "<td>".$row["item_id"]."</td>";
-    echo "<td>".$row["name"]."</td>";
-	echo "<td>".$row["description"]."</td>";
-	echo "<td>".$row["image_path"]."</td>";
+	echo "<td>".$item["item_id"]."</td>";
+    echo "<td>".$item["name"]."</td>";
+	echo "<td>".$item["description"]."</td>";
+	echo "<td>".$item["image_path"]."</td>";
 	echo "</tr>";
 }
 ?>
