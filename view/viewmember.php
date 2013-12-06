@@ -1,5 +1,5 @@
 <?php
-	foreach($model as $tree)
+	foreach($model["forest"] as $tree)
 	{
 		echo "<hr/>";
 		echo "<h3>".$tree->name."</h3>";
@@ -9,7 +9,7 @@
 			foreach($branch->leaves as $leaf)
 			{
 				echo $leaf->name." ";
-			if($leaf->have==0)
+			if($model["player"]->getItemByID($leaf->item_id)==0)
 			{
 				echo "<span style='color:red;'><b>I can't find it!!</b></span><br/>";
 			}

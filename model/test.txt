@@ -1,0 +1,4 @@
+SELECT b.name, b.item_id, a.attachment_item_id, pa.name
+FROM ncwtable b
+LEFT JOIN wattachments a ON b.item_id = a.item_id
+LEFT JOIN items pa ON pa.item_id = a.attachment_item_id

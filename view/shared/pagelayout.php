@@ -8,7 +8,20 @@
 			@import "css/jquery.dataTables.css";
 			@import "css/chosen.min.css";
 		</style>
-		<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+
+		<div id="menu">
+			<ul>
+				<li><a href="index.php">Home</a></li>
+				<li><a href="itemTable.php">Item List</a></li>
+				<li><a href="skillTable.php">Skill List</a></li>
+			</ul>
+		</div>
+	</head>
+	<body>
+		<?php include($page);//This is where we load the page ?>
+	</body>
+	<footer>
+	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
 		<!--DataTable JS stuff-->
 		<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
 		<script type="text/javascript" charset="utf-8">
@@ -17,7 +30,7 @@
 			} );
 		</script>
 		<!--Chosen JS stuff-->
-		<script src="chosen.jquery.min.js" type="text/javascript"></script>
+		<script src="js/chosen.jquery.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
 		var config = {
 		'.chosen-select'           : {},
@@ -31,18 +44,5 @@
 		}
 		</script>
 		<!--  Need to clean up this part above -->
-		
-		<div id="menu">
-			<ul>
-				<li><a href="index.php">Home</a></li>
-				<li><a href="itemTable.php">Item List</a></li>
-				<li><a href="skillTable.php">Skill List</a></li>
-			</ul>
-		</div>
-	</head>
-	<body>
-		<?php include($page);//This is where we load the page ?>
-	</body>
-	<footer>
 	</footer>
 </html>

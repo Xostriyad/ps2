@@ -10,13 +10,13 @@ class Tree {
         $this->name = $name;
 		$this->branches = array();
     }
-	public function addBranch($branchName, $eqName, $haveEq)
+	public function addBranch($branchName, $eqName, $item_id)
 	{
 		if (!isset($this->branches[$branchName]))
 		{
 			$this->branches[$branchName] = new Branch($branchName);
 		}
-		$this->branches[$branchName]->addLeaf($eqName, $haveEq);
+		$this->branches[$branchName]->addLeaf($eqName, $item_id);
 	}
 }
 ?>

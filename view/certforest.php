@@ -7,6 +7,7 @@
 	<tr>
 		<th>Group Name</th>
 		<th> </th>
+		<th> </th>
 	</tr>
 </thead>
 <tbody>
@@ -15,6 +16,7 @@ foreach($model as $item)
 {
 	echo '<tr>';
 	echo '<td>'.$item["group_name"].'</td>';
+	echo '<td> <a href="viewTree.php?id='.$item["group_id"].'">View</a></td>';
 	echo '<td> <a href="deleteTree.php?id='.$item["group_id"].'">Delete</a></td>';
 	echo '</tr>';
 }
@@ -23,6 +25,7 @@ foreach($model as $item)
 <tfoot>
 	<tr>
 		<th>Group Name</th>
+		<th> </th>
 		<th> </th>
 	</tr>
 </tfoot>

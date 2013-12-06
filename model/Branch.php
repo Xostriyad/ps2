@@ -10,11 +10,10 @@ class Branch {
         $this->name = $name;
 		$this->leaves = array();
     }
-	public function addLeaf($eqName, $haveEq)
+	public function addLeaf($eqName, $item_id)
 	{
-		$temp = new Leaf($eqName, $haveEq);
+		$temp = new Leaf($eqName, $item_id);
 		array_push($this->leaves, $temp);
-		
 	}
 }
 ?>

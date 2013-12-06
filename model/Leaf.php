@@ -2,12 +2,12 @@
 class Leaf {
 
 	public $name;
-	public $have;
+	public $item_id;
 	
-	public function __construct($eqName, $haveEq)  
+	public function __construct($eqName, $item_id)  
     {  
 		$this->name = $eqName;
-		$this->have = $haveEq;
+		$this->item_id = $item_id;
     } 
 }
 ?>
