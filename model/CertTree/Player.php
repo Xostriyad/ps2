@@ -48,7 +48,7 @@ class Player
     }
 	protected function loadItemsByID( $id ) 
 	{
-    	$url = "http://census.soe.com/get/ps2:v2/characters_item?character_id=".$id."&c:show=item_id"; //returning all items, I don't know why, seems broken on SOE census side.
+    	$url = "http://census.soe.com/s:vco/get/ps2:v2/characters_item?character_id=".$id."&c:show=item_id"; //returning all items, I don't know why, seems broken on SOE census side.
 		$response = file_get_contents($url);
 		$json = json_decode($response, true);
 		$this->items = $json["characters_item_list"];
@@ -56,7 +56,7 @@ class Player
 	protected function loadSkillsByID( $id ) 
 	{
 		//$skillFilter = "&skill_id=728,729,730,731,732,733,734,735,736,737";//maybe use these filters later
-    	$url = "http://census.soe.com/get/ps2:v2/characters_skill?character_id=".$id."&c:limit=9001&c:sort=skill_id:1&c:show=skill_id";
+    	$url = "http://census.soe.com/s:vco/get/ps2:v2/characters_skill?character_id=".$id."&c:limit=9001&c:sort=skill_id:1&c:show=skill_id";
 		$response = file_get_contents($url);
 		$json = json_decode($response, true);
 		$this->skills = $json["characters_skill_list"];

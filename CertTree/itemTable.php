@@ -1,5 +1,5 @@
 <?php 
-	include_once("controller/Controller.php");
+	include_once("../controller/CertTreeController.php");
 	$controller = new Controller();
 	$controller->itemTable();
 ?>

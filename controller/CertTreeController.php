@@ -1,6 +1,6 @@
 <?php
-include_once("model/Members.php");
-include_once("model/dbconnect.php");
+include_once("../model/CertTree/Members.php");
+include_once("../model/Shared/dbconnect.php");
 class Controller {
 
 	public function __construct()  
@@ -9,7 +9,7 @@ class Controller {
 	
 	protected function view($page, $model = null)
 	{
-		include_once("view/shared/pagelayout.php");
+		include_once("../view/shared/pagelayout.php");
 	}
 	
 	public function index()
@@ -20,26 +20,26 @@ class Controller {
 			//hard coding just one member group for the time being until phase 1 deployment is done
 			$members = Members::withID($id);
 			$players = $members->getMembers();
-			$page = 'view/memberlist.php';
+			$page = '../view/CertTree/memberlist.php';
 			$this->view($page, $players);
 		}
 		else
 		{
-			include_once("model/Player.php");
-			include_once("model/Forest.php");
+			include_once("../model/CertTree/Player.php");
+			include_once("../model/CertTree/Forest.php");
 			$id = $_GET['id'];
 			if(empty($id))
 			{
 				exit();
 			}
 			$tempTrees = array();
-			array_push($tempTrees, "1","2","3");
+			array_push($tempTrees, "1","2","3","4","5","6");
 			$forest = new Forest($tempTrees); 
 			$player = Player::withID($id);
 			$model = array();
 			$model["player"] = $player;
 			$model["forest"] = $forest->trees;
-			$page = 'view/viewmember.php';
+			$page = '../view/CertTree/viewmember.php';
 			
 			$this->view($page, $model);
 		}
@@ -47,37 +47,37 @@ class Controller {
 	
 	public function skillTable()
 	{
-		include("model/dbconnect.php");
+		include("../model/Shared/dbconnect.php");
 		$stmt = $dbh->prepare("SELECT * FROM `skills`");
 		$stmt->execute();
 		$model = $stmt->fetchAll();
-		$page = 'view/skilltable.php';
+		$page = '../view/CertTree/skilltable.php';
 		$this->view($page, $model);
 	}
 	
 	public function itemTable()
 	{
-		include("model/dbconnect.php");
+		include("../model/Shared/dbconnect.php");
 		$stmt = $dbh->prepare("SELECT * FROM `items`");
 		$stmt->execute();
 		$model = $stmt->fetchAll();
-		$page = 'view/itemtable.php';
+		$page = '../view/CertTree/itemtable.php';
 		$this->view($page, $model);
 	}
 	
 	public function certForest()
 	{
-		include("model/dbconnect.php");
+		include("../model/CertTree/dbconnect.php");
 		$stmt = $dbh->prepare("SELECT * FROM `groups`");
 		$stmt->execute();
 		$model = $stmt->fetchAll();
-		$page = 'view/certforest.php';
+		$page = '../view/CertTree/certforest.php';
 		$this->view($page, $model);
 	}
 	
 	public function insertTree()
 	{
-		include("model/dbconnect.php");
+		include("../model/Shared/dbconnect.php");
 		if(isset($_POST["name"]))
 		{
 			$stmt = $dbh->prepare("INSERT INTO groups (group_name) VALUES (:name) ON DUPLICATE KEY UPDATE group_name=':name'");
@@ -91,7 +91,7 @@ class Controller {
 	
 	public function deleteTree()
 	{
-		include("model/dbconnect.php");
+		include("../model/CertTree/dbconnect.php");
 		if(isset($_GET["id"]))
 		{
 			$stmt = $dbh->prepare("DELETE FROM groups WHERE group_id = :id");
@@ -110,8 +110,8 @@ class Controller {
 			header('Location: certForest.php');
 			exit();
 		}
-		include("model/dbconnect.php");
-		include_once("model/Forest.php");
+		include("../model/CertTree/dbconnect.php");
+		include_once("../model/CertTree/Forest.php");
 		$tempTrees = array();
 		array_push($tempTrees, $_GET["id"]);
 		$forest = new Forest($tempTrees);
@@ -119,12 +119,12 @@ class Controller {
 		$model = array();
 		$model["forest"] = $forest;
 		$model["allItems"] = $allItems;
-		$page = 'view/viewtree.php';
+		$page = 'view/CertTree/viewtree.php';
 		$this->view($page, $model);
 	}
 	public function insertLeaf()
 	{
-		include("model/dbconnect.php");
+		include("../model/Shared/dbconnect.php");
 		if(isset($_POST["weapons"]))
 		{
 			foreach ($_POST['weapons'] as $input)
@@ -144,7 +144,7 @@ class Controller {
 	}
 	public function deleteLeaf()
 	{
-		include("model/dbconnect.php");
+		include("../model/Shared/dbconnect.php");
 		echo $_GET["group_id"];
 		echo $_GET["item_id"];
 		

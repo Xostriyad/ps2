@@ -8,8 +8,9 @@ class Member {
 	public $earned_points;
 	public $minutes_played;
 	public $avg_cpm;
+	public $last_login_date;
 	
-	public function __construct($name, $id, $battle_rank, $earned_points, $minutes_played)  
+	public function __construct($name, $id, $battle_rank, $earned_points, $minutes_played, $last_login_date)  
     {  
         $this->name = $name;
 	    $this->id = $id;
@@ -24,6 +25,7 @@ class Member {
 		{
 			$this->avg_cpm = 0;
 		}
+		$this->last_login_date = $last_login_date;
     } 
 }
 

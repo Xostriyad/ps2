@@ -1,6 +1,6 @@
 <?php
 
-	include_once("model/Tree.php");
+	include_once("../model/CertTree/Tree.php");
 	Class Forest
 	{
 		public $trees;
@@ -90,7 +90,7 @@
 		}
 		protected function runQ($query)
 		{
-			include("model/dbconnect.php");
+			include("../model/Shared/dbconnect.php");
 			$queryItems = $dbh->prepare($query);
 			$queryItems->execute();
 			$rows = $queryItems->fetchAll();

@@ -1,7 +1,7 @@
 <?php
 
-	include_once("model/Tree.php");
-	include_once("model/Player.php");
+	include_once("../model/CertTree/Tree.php");
+	include_once("../model/CertTree/Player.php");
 	Class Forest
 	{
 		public $vehicles;

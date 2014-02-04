@@ -1,5 +1,5 @@
 <?php
-include_once("model/Leaf.php");
+include_once("../model/CertTree/Leaf.php");
 class Branch {
 
 	public $name;

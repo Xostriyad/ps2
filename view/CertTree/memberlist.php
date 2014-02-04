@@ -7,6 +7,7 @@
 			<th>Earned Certs</th>
 			<th>Minutes Played</th>
 			<th>Certs/Minute</th>
+			<th>Last Login Date</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,6 +21,7 @@
 			echo "<td>".$player->earned_points."</td>";
 			echo "<td>".$player->minutes_played."</td>";
 			echo "<td>".$player->avg_cpm."</td>";
+			echo "<td>".$player->last_login_date."</td>";
 			echo "</tr>";
 		}
 	?>
@@ -32,6 +34,7 @@
 			<th>Earned Certs</th>
 			<th>Minutes Played</th>
 			<th>Certs/Minute</th>
+			<th>Last Login Date</th>
 		</tr>
 	</tfoot>
 </table>
