@@ -67,8 +67,12 @@ class Player
 		if ($high < $low) return -1; //match not found
 		$mid = $low + (($high-$low) / 2);
 		$mid = intval($mid); //without intval to force this to an int the search will drift on a double or float value and will miss the target.
-		//print_r($mid);
-		//echo "<br/>";//in case you want the search to occur
+		
+		if(!isset($sortedArray[$mid][$targetField]))  //If mid doesn't exist go ahead and kill the search.
+		{
+			return -1;
+		}
+		
 		if ($sortedArray[$mid][$targetField] > $target) 
 			return $this->findContentByIndex($sortedArray, $target, $low, $mid - 1,$targetField);
 		else if ($sortedArray[$mid][$targetField] < $target)

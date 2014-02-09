@@ -1,0 +1,27 @@
+attacker_character_id: "5428117870047136257",	
+attacker_vehicle_id: "0",
+attacker_weapon_id: "0",
+character_id: "5428011263274974625",
+is_critical: "0",
+is_headshot: "0",
+table_type: "kills",
+timestamp: "1390753819",
+world_id: "17",
+zone_id: "2"
+
+
+attacker_loadout_id: "20",
+attacker_player_guid: "5428153774051702273",
+attacker_vehicle_id: "0",
+attacker_weapon_id: "86",
+character_id: "5428117870047136257",
+event_type: "VehicleDestroy",
+faction_id: "2",
+projectile_id: "21",
+table_type: "vehicle_destroy",
+timestamp: "1390753942",
+vehicle_definition_id: "11",
+world_id: "17",
+zone_id: "2"
+
+I should just keep these in seperate tables.

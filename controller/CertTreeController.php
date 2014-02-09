@@ -9,6 +9,13 @@ class Controller {
 	
 	protected function view($page, $model = null)
 	{
+		$title = 'Cert Tree';
+		$menu = '
+			<li><a href="index.php">Home</a></li>
+			<li><a href="itemTable.php">Item List</a></li>
+			<li><a href="skillTable.php">Skill List</a></li>
+		';
+		$pathToRoot = '../';
 		include_once("../view/shared/pagelayout.php");
 	}
 	

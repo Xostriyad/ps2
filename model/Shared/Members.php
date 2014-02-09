@@ -17,6 +17,25 @@ class Members
 	{
 		return $this->members;
 	}
+	protected function fillMembers( $id )
+	{
+		include("../model/Shared/dbconnect.php");
+		$stmt = $dbh->prepare("
+		INSERT INTO members (outfit_id, character_id, name) 
+		VALUES (:outfit_id, :character_id, :name)
+		");
+		$stmt->bindParam(':outfit_id', $outfit_id);
+		$stmt->bindParam(':character_id', $character_id);
+		$stmt->bindParam(':name', $name);
+		
+		foreach ($this->members as $member)
+		{
+			$outfit_id = $id;
+			$character_id = $member->id;
+			$name = $member->name;
+			$stmt->execute();
+		}
+	}
 	protected function loadByID( $id ) 
 	{
 		$this->$id = $id;
@@ -38,6 +57,9 @@ class Members
 				array_push($this->members, $temp);
 			}
 		}
+		$this->fillMembers($id);
+		
     }
+	
 }
 ?>
